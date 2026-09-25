@@ -20,7 +20,7 @@ Follow these steps to set up and run the project on your local machine.
 You can run project with 2 ways (with Docker or with Postgres directly)
 
 ---
-### **Run the Project with Docker**
+### **Run the Project with Docker and directly**
 
 Install Python3:
 
@@ -111,7 +111,7 @@ WG_ALLOWEDIPS=add_data
 WG_PERSISTENKEEPALIVE=add_data
 ```
 
-#### **5. Run the Project with Docker**
+#### **Run the Project with Docker**
 (Linux, MacOS)
 ```bash
 make build
@@ -122,4 +122,16 @@ or use commands (Linux, MacOS, Windows):
 ```bash
 docker build -t ftp_wireguard .
 docker run --rm -it --cap-add=NET_ADMIN --cap-add=MKNOD --env-file .env ftp_wireguard
+```
+
+
+#### **Run the Project directly**
+(Linux, MacOS)
+
+Turn on 'wireguard' vpn on you machine directly.
+Do not use '@wireguard' decorator in main.py module.
+If you use 'ping' function use ping(wg=False).
+```bash
+python3 src/main.py
+python3 main.py
 ```
