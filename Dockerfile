@@ -6,7 +6,7 @@ FROM python:${PYTHON_VERSION}-slim as base
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /src
+WORKDIR /vpn_wireguard
 
 # Install wireguard-tools, iptables, iproute2, openresolv, iputils-ping (ping)
 # to work with network and wireguard (vpn)
@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 COPY . .
 
 # Specify the root for imports
-ENV PYTHONPATH=/src
+ENV PYTHONPATH=/vpn_wireguard
 
 COPY entrypoint.sh /entrypoint.sh
 
