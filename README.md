@@ -126,7 +126,6 @@ docker run --rm -it --cap-add=NET_ADMIN --cap-add=MKNOD --env-file .env ftp_wire
 
 
 #### **Run the Project directly**
-(Linux, MacOS)
 
 Turn on 'wireguard' vpn on you machine directly.
 Do not use '@wireguard' decorator in main.py module.
