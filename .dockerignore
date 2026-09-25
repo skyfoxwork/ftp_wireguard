@@ -7,6 +7,7 @@
 **/.DS_Store
 **/__pycache__
 **/.venv
+**/venv
 **/.classpath
 **/.dockerignore
 **/.env
@@ -16,6 +17,7 @@
 **/.project
 **/.settings
 **/.toolstarget
+**/.idea
 **/.vs
 **/.vscode
 **/*.*proj.user
