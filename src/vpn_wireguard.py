@@ -1,8 +1,10 @@
 import os
 import subprocess
 
-from src import app_settings
+from settings import Settings
 
+
+app_settings = Settings()
 
 def vpn_up(config):
     print("[Python] up VPN...")
@@ -37,9 +39,18 @@ def wireguard(funk):
     return wrapper
 
 @wireguard
-def ping():
+def ping_wg():
     """
     Test ping function.
     Turn on VPN, send 5 ICMP echo requests to the FTP host, and turn off VPN.
     """
     subprocess.run(["ping", "-c5", app_settings.FTP_HOST], check=True)
+
+def ping(wg: bool = True) -> None:
+    """
+    Test ping function.
+    """
+    if wg:
+        ping_wg()
+    else:
+        subprocess.run(["ping", "-c5", app_settings.FTP_HOST], check=True)
