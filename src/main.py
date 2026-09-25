@@ -1,8 +1,10 @@
 from ftplib import FTP_TLS
 
-from src import app_settings
+from settings import Settings
 from vpn_wireguard import wireguard, ping
 
+
+app_settings = Settings()
 
 @wireguard
 def main():
