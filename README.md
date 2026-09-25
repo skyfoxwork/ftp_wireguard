@@ -78,7 +78,19 @@ source venv/bin/activate
 ```shell
 venv\Scripts\activate
 ```
+if you need to deactivate virtual environment use:
 
+```shell
+deactivate
+```
+
+---
+
+#### **3. Install Dependencies with Poetry**
+
+```shell
+pip install -r requirements.txt
+```
 ---
 
 #### **4. Create a `.env` File**
