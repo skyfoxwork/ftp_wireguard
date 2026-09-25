@@ -7,7 +7,7 @@ from vpn_wireguard import wireguard, ping
 app_settings = Settings()
 
 @wireguard
-def main():
+def main() -> None:
     with FTP_TLS(app_settings.FTP_HOST) as ftp:
 
         ftp.auth()

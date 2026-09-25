@@ -1,20 +1,21 @@
 import os
 import subprocess
+from collections.abc import Callable
 
 from settings import Settings
 
 
 app_settings = Settings()
 
-def vpn_up(config):
+def vpn_up(config) -> None:
     print("[Python] up VPN...")
     subprocess.run(["wg-quick", "up", config], check=True)
 
-def vpn_down(config):
+def vpn_down(config) -> None:
     print("[Python] down VPN...")
     subprocess.run(["wg-quick", "down", config], check=True)
 
-def wireguard(funk):
+def wireguard(funk) -> Callable[[], None]:
     """
     Decorator to automatically turn on and turn off a WireGuard VPN tunnel.
 
@@ -39,7 +40,7 @@ def wireguard(funk):
     return wrapper
 
 @wireguard
-def ping_wg():
+def ping_wg() -> None:
     """
     Test ping function.
     Turn on VPN, send 5 ICMP echo requests to the FTP host, and turn off VPN.

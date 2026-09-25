@@ -39,7 +39,7 @@ class Settings:
     """
 
     @staticmethod
-    def secure_opener(path, flags):
+    def secure_opener(path, flags) -> int:
         """
         Open the file with restrictive permissions (0600),
         readable and writable only by the owner.
