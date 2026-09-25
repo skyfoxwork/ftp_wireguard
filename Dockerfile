@@ -26,9 +26,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Copy source code
 COPY . .
 
-# Specify the root for imports
-ENV PYTHONPATH=/vpn_wireguard
-
 COPY entrypoint.sh /entrypoint.sh
 
 # Make it executable
