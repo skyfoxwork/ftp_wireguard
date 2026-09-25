@@ -25,15 +25,20 @@ def wireguard(funk) -> Callable[[], None]:
     afterward.
     """
     def wrapper():
+        vpn_started = False
+
         try:
             with open(app_settings.RAM_CONFIG_PATH, "w", opener=app_settings.secure_opener) as f:
                 f.write(app_settings.wg_config)
 
             vpn_up(app_settings.RAM_CONFIG_PATH)
+            vpn_started = True
             funk()
-            vpn_down(app_settings.RAM_CONFIG_PATH)
 
         finally:
+            if vpn_started:
+                vpn_down(app_settings.RAM_CONFIG_PATH)
+
             if os.path.exists(app_settings.RAM_CONFIG_PATH):
                 os.remove(app_settings.RAM_CONFIG_PATH)
 
