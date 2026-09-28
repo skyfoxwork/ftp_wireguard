@@ -26,13 +26,14 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Copy source code
 COPY . .
 
-COPY entrypoint.sh /entrypoint.sh
+# Convert Windows line endings (\r\n) to Linux (\n)
+RUN sed -i 's/\r$//' entrypoint.sh
 
 # Make it executable
-RUN chmod +x /entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 # Set as the main entry point
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 
 # Run the application.
 CMD ["python3", "src/main.py"]
