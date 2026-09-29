@@ -4,9 +4,17 @@
 .PHONY: build run
 
 # Build image
-build:
+build-docker:
 	docker build -t ftp_wireguard .
 
 # Start container and remove it after execution
-run:
+run-docker:
 	docker run --rm -it --cap-add=NET_ADMIN --cap-add=MKNOD --env-file .env ftp_wireguard
+
+# Build image with docker compose
+build:
+	docker compose build
+
+# Start container with docker compose
+run:
+	docker compose up
