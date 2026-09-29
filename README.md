@@ -121,6 +121,10 @@ WG_PUBLICKEY=add_data
 WG_ENDPOINT=add_data
 WG_ALLOWEDIPS=add_data
 WG_PERSISTENKEEPALIVE=add_data
+
+# Folders
+HOST_DOWNLOADS_PATH=./data
+CONTAINER_DOWNLOADS_PATH=/ftp_wireguard/data
 ```
 
 #### **Run the Project with Docker**
@@ -132,16 +136,23 @@ make run
 
 or use commands (Linux, MacOS, Windows):
 ```bash
-docker build -t ftp_wireguard .
-docker run --rm -it --cap-add=NET_ADMIN --cap-add=MKNOD --env-file .env ftp_wireguard
+docker compose build
+docker compose up
 ```
 
 
 #### **Run the Project directly**
 
-Turn on 'wireguard' vpn on you machine directly.
-Do not use '@wireguard' decorator in main.py module.
-If you use 'ping' function use ping(wg=False).
+Turn on 'wireguard' vpn on you machine directly.<br>
+Do not use '@wireguard' decorator in main.py module.<br>
+If you use 'ping' function use ping(wg=False).<br>
+```bash
+Change:
+download_dir = f"{app_settings.CONTAINER_DOWNLOADS_PATH}/csv"
+on
+download_dir = f"{app_settings.HOST_DOWNLOADS_PATH}/csv"
+```
+##### **Run**
 ```bash
 python3 src/main.py
 python3 main.py
