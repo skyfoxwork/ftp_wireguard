@@ -1,0 +1,19 @@
+services:
+  ftp-wireguard:
+    # Build the Docker image using the Dockerfile in the current directory
+    build: .
+    # Name of the built image
+    image: ftp_wireguard
+    # Custom name for the running container
+    container_name: ftp-wireguard
+    # Give the container Linux capabilities to manage network and VPN (WireGuard)
+    # docker run --cap-add=NET_ADMIN и --cap-add=MKNOD
+    cap_add:
+      - NET_ADMIN
+      - MKNOD
+    # Load environment variables into the container from the .env file
+    env_file:
+      - .env
+    # Map the folder on your PC to the folder inside the container
+    volumes:
+      - ${HOST_DOWNLOADS_PATH}:${CONTAINER_DOWNLOADS_PATH}
