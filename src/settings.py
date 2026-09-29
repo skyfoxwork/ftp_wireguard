@@ -14,6 +14,10 @@ load_dotenv()
 
 @dataclass
 class Settings:
+    # Folders
+    HOST_DOWNLOADS_PATH: str = os.getenv("HOST_DOWNLOADS_PATH", "test_folder")
+    CONTAINER_DOWNLOADS_PATH: str = os.getenv("CONTAINER_DOWNLOADS_PATH", "test_folder")
+
     # FTP
     FTP_HOST: str = os.getenv("FTP_HOST", "test_host")
     FTP_USER: str = os.getenv("FTP_USER", "test_user")
