@@ -1,3 +1,4 @@
+import os
 from ftplib import FTP_TLS
 
 from settings import Settings
@@ -5,6 +6,10 @@ from vpn_wireguard import wireguard, ping
 
 
 app_settings = Settings()
+
+download_dir = f"{app_settings.CONTAINER_DOWNLOADS_PATH}/csv"
+
+os.makedirs(download_dir, exist_ok=True)
 
 @wireguard
 def main() -> None:
