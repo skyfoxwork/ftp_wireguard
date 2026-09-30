@@ -2,7 +2,7 @@ import os
 from ftplib import FTP_TLS
 
 from settings import Settings
-from vpn_wireguard import wireguard, ping
+from services.vpn_wireguard import wireguard, ping
 
 
 app_settings = Settings()
