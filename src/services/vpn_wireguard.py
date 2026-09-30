@@ -15,7 +15,7 @@ def vpn_down(config) -> None:
     print("[Python] down VPN...")
     subprocess.run(["wg-quick", "down", config], check=True)
 
-def wireguard(funk) -> Callable[[], None]:
+def wireguard(funk):
     """
     Decorator to automatically turn on and turn off a WireGuard VPN tunnel.
 
@@ -24,7 +24,7 @@ def wireguard(funk) -> Callable[[], None]:
     guarantees that the interface is brought DOWN and the config is deleted
     afterward.
     """
-    def wrapper():
+    def wrapper(*args, **kwargs):
         vpn_started = False
 
         try:
@@ -33,7 +33,7 @@ def wireguard(funk) -> Callable[[], None]:
 
             vpn_up(app_settings.RAM_CONFIG_PATH)
             vpn_started = True
-            funk()
+            funk(*args, **kwargs)
 
         finally:
             if vpn_started:
